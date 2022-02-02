@@ -31,7 +31,7 @@ export function onClientRequest(request) {
     
         <p>EdgeWorkers are serverless compute environments running on Akamai's network 📡🌐</p>
         
-        <p>Akamai has approximately 325,000 servers in more than 135 countries and over 1,400 networks around the world 🌎🤯</p>
+        <p>Akamai has over 250,000 edge servers in more than 135 countries and over 1,400 networks around the world 🌎🤯</p>
         
         <p>That means you can run serverless functions super close to your users, reducing response times, and giving them a faster experience no matter where they are 🚴‍♀️🏎🚄🛫🚀
         <br>
