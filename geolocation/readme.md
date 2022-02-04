@@ -1,6 +1,14 @@
-# hello-world
+# Geolocation
 
-With this example you learn the basics of creating and deploying an EdgeWorker that generates a simple html response at the edge.
+In this example you'll learn about the [`userLocation`](https://techdocs.akamai.com/edgeworkers/docs/user-location-object) property of the EdgeWorkers `request` object. This object provides information about the city, continent, country, region, or zip code based on the IP address of the requesting device.
+
+With this information you can provide a more personalized experience:
+- Greet users in different languages
+- Show monetary values in the local currency
+- Block access from embargoed countries
+- Gather regional analytics without client-side JavaScript
+
+More details at [techdocs.akamai.com/edgeworkers/docs/user-location-object](https://techdocs.akamai.com/edgeworkers/docs/user-location-object)
 
 ## What are EdgeWorkers
 

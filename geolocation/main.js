@@ -64,6 +64,10 @@ function getGreetingFromCountry(countryCode) {
  * @param {EW.IngressClientRequest} request The request object @see https://techdocs.akamai.com/edgeworkers/docs/request-object
  */
 export async function onClientRequest(request) {
+  /**
+   * Grab details about the user's location
+   * @see https://techdocs.akamai.com/edgeworkers/docs/user-location-object
+   */
   const geo = {
     city: request.userLocation.city ? request.userLocation.city : 'N/A',
     zipCode: request.userLocation.zipCode ? request.userLocation.zipCode : 'N/A',
@@ -74,6 +78,11 @@ export async function onClientRequest(request) {
   const flag = getFlagEmoji(geo.country);
   const greeting = getGreetingFromCountry(geo.country);
 
+  /**
+   * The request.respondWith method constructs a response for the given request, rather than fetching a response from cache or the origin.
+   * Responses created through the respondWith() method can return a body with a maximum of 2048 characters.
+   * @see https://techdocs.akamai.com/edgeworkers/docs/request-object#respondwith
+   */
   request.respondWith(
     200,
     {},
@@ -85,7 +94,7 @@ export async function onClientRequest(request) {
         <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌎</text></svg>" />
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/bedrocss">
         <style>
-          body { max-width: 60rem; margin: auto; padding: 2rem; font-family: Roboto, Helvetica, Arial, sans-serif; }
+          body { max-width: 60rem; margin: auto; padding: 2rem; font-family: Roboto, system-ui; }
           a { color: #017ac6; }
         </style>
       </head>
@@ -102,6 +111,14 @@ export async function onClientRequest(request) {
 
         <p>You could use this information to customize a user's experience based on location. And since the location is based on the server and not the user's specific location, you don't have to worry about privacy issues or legislation like GDPR.</p>
 
+        <p>Here's some ideas to get you started:</p>
+        <ul>
+          <li>Greet users in different languages</li>
+          <li>Show monetary values in the local currency</li>
+          <li>Block access from embargoed countries</li>
+          <li>Gather regional analytics without client-side JavaScript</li>
+        </ul>
+        
         <p><a href="https://techdocs.akamai.com/edgeworkers/docs/user-location-object">Learn more about EdgeWorkers' location object 📄</a></p>
       </body>
     </html>`

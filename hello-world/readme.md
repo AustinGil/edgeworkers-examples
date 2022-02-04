@@ -1,6 +1,6 @@
-# hello-world
+# Hello World
 
-With this example you learn the basics of creating and deploying an EdgeWorker that generates a simple html response at the edge.
+In this example you'll learn the basics of creating and deploying an EdgeWorker that generates a simple HTML response at the edge. It uses the request's [`respondWith`](https://techdocs.akamai.com/edgeworkers/docs/request-object#respondwith) method to return HTML to the user.
 
 ## What are EdgeWorkers
 
