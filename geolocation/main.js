@@ -65,7 +65,7 @@ function getGreetingFromCountry(countryCode) {
  */
 export async function onClientRequest(request) {
   /**
-   * Grab details about the user's location
+   * Grab location information about the server handling this request. This can be used to roughly determine the user's location.
    * @see https://techdocs.akamai.com/edgeworkers/docs/user-location-object
    */
   const geo = {
