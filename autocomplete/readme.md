@@ -1,23 +1,14 @@
-# API Proxy
+# Autosuggest
 
-This examples uses Akamai EdgeWorkers as a proxy server for the [OpenWeather API](https://openweathermap.org/api).
+This example showcases how EdgeWorkers are a great candidate for an auto-suggest feature. EdgeWorkers allow us to remove any static lists of search results and libraries from our client side bundle, while also avoiding long round-trip requests to origin servers. It's a happy medium between client-side and server-side search. 
 
-**Steps:**
-1. Hook into the [`responseProvider`](https://techdocs.akamai.com/edgeworkers/docs/event-handler-functions) event.
-2. Use [`request.getVariable()`](https://techdocs.akamai.com/edgeworkers/docs/request-object#getvariable) to grab OpenWeather API keys from property configuration.
-3. Use [`request.userLocation`](https://techdocs.akamai.com/edgeworkers/docs/user-location-object) to grab the location of the edge server closest to the user.
-4. Use the built-in [`httpRequest()`](https://techdocs.akamai.com/edgeworkers/docs/http-request#httprequest) module to make the API request.
-5. Create a response with [`createResponse()`](https://techdocs.akamai.com/edgeworkers/docs/create-response#createresponse) to send back to the user.
+Benefits:
+- No extra fuzzy-search library in client-side bundle.
+- No huge list of search items in client-side bundle.
+- Smaller client-side bundles, faster downloads, less data for users.
+- Runs on nearest edge server to users, less latency, faster responses.
 
-**Prerequisites:**
-- Have a valid Akamai account with an EdgeWorkers contract.
-- `responseProvider` and sub-requests will only work if you have a properly configured delivery configuration.
-- You will need to create a [user-defined variable](https://techdocs.akamai.com/property-mgr/docs/user-defined-vars) called `PMUSER_OPENWEATHER_API_KEY` and assign it the value of your OpenWeather API key. 
-- Hostnames like the OpenWeather API can only be hit directly when served through the Akamai network. If you don't have an associated delivery product sub-requests will fail with a 400 HTTP response code.
-
-**Benefits:**
-- Requests happen close to the user without exposing API keys.
-- Increase speed by making requests on Akamai network instead of the user's.
+This example uses a local copy of [QuickScore.js](https://github.com/fwextensions/quick-score) to provide fast fuzzy-search results.
 
 ## What are EdgeWorkers
 
